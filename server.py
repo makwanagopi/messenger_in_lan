@@ -5,24 +5,24 @@ from playsound import playsound
 
 FLAG = False
 
-def recv_from_cilent(conn):
+def recv_from_cilent(con):
 	global FLAG
 	try:
 		while True:
 			if FLAG == True:
 				break
-			message = conn.recv(1024).decode()
+			message = con.recv(1024).decode()
 
 			if message == 'q':
-				conn.send('q'.encode())
+				con.send('q'.encode())
 				print('closing connection')
-				conn.close()
+				con.close()
 				FLAG = True
 				break
-			print('Cilent :' + message)
+			print(message)
 		playsound('alert-signal.wav')
 	except:
-		conn.close()
+		con.close()
 
 def send_to_cilent(conn):
 	global FLAG

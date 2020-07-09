@@ -5,15 +5,14 @@ from playsound import playsound
 
 FLAG = False
 
-print("enter you name")
-name = input('')
+name = input('Enter Your name:')
 
 def send_to_server(closck):
 	global FLAG
 	while True:
 		if FLAG == True:
 			break
-		send_msg = input('')
+		send_msg =name + ": "+ input('')
 		closck.sendall(send_msg.encode())
 
 def recv_from_server(closck):
@@ -37,7 +36,7 @@ def main():
 	clienctSocket = socket(AF_INET,SOCK_STREAM)
 
 	clienctSocket.connect((HOST,PORT))
-	print('ckecint is connected to a chat server\n')
+	print(name + ',You are connected to a chat server\n')
 
 
 	t_send = threading.Thread(target=send_to_server,args=(clienctSocket,))
