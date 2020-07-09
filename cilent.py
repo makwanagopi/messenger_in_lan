@@ -23,9 +23,9 @@ def recv_from_server(closck):
 			print('Closing connection')
 			FLAG = True
 			break
-
-		print(name + data)
-	playsound('alert-signal.wav')
+		print("server: "+data)
+	for _ in range(5):
+		playsound('alert-signal.wav')
 
 def main():
 	threads = []
